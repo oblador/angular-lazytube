@@ -1,5 +1,5 @@
 angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).
-directive('obYoutube', function($sce, $templateCache, obLazytubeConfig){
+directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
   //Inject base styles
   angular.element(document).find('head').prepend($templateCache.get('templates/lazytube/styles.html'));
 
@@ -8,6 +8,7 @@ directive('obYoutube', function($sce, $templateCache, obLazytubeConfig){
 
   //Valid attributes that will be passed on to youtube via the query string
   var paramNames = 'autohide autoplay cc_load_policy color controls disablekb enablejsapi end fs iv_load_policy list listType loop modestbranding origin playerapiid playlist playsinline rel showinfo start theme'.split(' ');
+
   return {
     restrict: 'A',
     templateUrl: 'templates/lazytube/directive.html',
@@ -15,7 +16,7 @@ directive('obYoutube', function($sce, $templateCache, obLazytubeConfig){
     transclude: true,
     scope: true,
     link: function($scope, $element, $attrs) {
-      var id = $attrs.obYoutube;
+      var id = $attrs.obLazytube;
       if(!id) {
         var url = $attrs.href || $attrs.src;
         if(!url || !url.match(urlPattern)) {

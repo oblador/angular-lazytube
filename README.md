@@ -22,18 +22,18 @@ A few ways to embed the [Keyboard cat video](http://www.youtube.com/watch?v=J---
 
 ### Link
 ```html
-<a ob-youtube href="http://www.youtube.com/watch?v=J---aiyznGQ">Keyboard cat</a>
+<a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ">Keyboard cat</a>
 ```
 
 ### Default `iframe`
 
 ```html
-<iframe ob-youtube width="480" height="360" src="//www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen></iframe>
+<iframe ob-lazytube width="480" height="360" src="//www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen></iframe>
 ```
 
 ### ID based
 ```html
-<div ob-youtube="J---aiyznGQ">Keyboard cat</div>
+<div ob-lazytube="J---aiyznGQ">Keyboard cat</div>
 ```
 
 Player Configuration
@@ -61,7 +61,7 @@ angular.module('myApp', ['oblador.lazytube']).
 To acheive the same thing but to only a specific player, just add the parameters as attributes. 
 
 ```html
-<a ob-youtube href="http://www.youtube.com/watch?v=J---aiyznGQ" rel="0">Keyboard cat</a>
+<a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ" rel="0">Keyboard cat</a>
 ```
 
 Building

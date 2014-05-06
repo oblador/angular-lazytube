@@ -12,7 +12,7 @@ angular.module('oblador.lazytube.config', []).factory('obLazytubeConfig', functi
   };
 });
 
-angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).directive('obYoutube', [
+angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).directive('obLazytube', [
   '$sce',
   '$templateCache',
   'obLazytubeConfig',
@@ -30,7 +30,7 @@ angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).direct
       transclude: true,
       scope: true,
       link: function ($scope, $element, $attrs) {
-        var id = $attrs.obYoutube;
+        var id = $attrs.obLazytube;
         if (!id) {
           var url = $attrs.href || $attrs.src;
           if (!url || !url.match(urlPattern)) {
