@@ -1,0 +1,39 @@
+{
+  "name": "angular-lazytube",
+  "version": "0.1.0",
+  "description": "Lazy loading youtube videos with angular",
+  "keywords": [
+    "angular",
+    "youtube",
+    "lazy loading",
+    "lazytube",
+    "lazy"
+  ],
+  "main": "angular-lazytube.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com:oblador/angular-lazytube.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oblador/angular-lazytube/issues"
+  },
+  "scripts": {
+    "start": "http-server -p 8888",
+    "build": "gulp"
+  },
+  "author": "Joel Arvidsson",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1",
+    "gulp": "~3.6.0",
+    "gulp-ngmin": "~0.2.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-jshint": "~1.5.3",
+    "gulp-concat": "~2.2.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-angular-templatecache": "~1.1.3",
+    "event-stream": "~3.1.5",
+    "gulp-htmlmin": "~0.1.2"
+  }
+}

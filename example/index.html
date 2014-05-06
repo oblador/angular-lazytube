@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8" />
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <title>Angular Lazy Loading YouTube Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    body, button {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .wrap {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    code {
+      display: block;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #ebebeb;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Angular.js Lazy Loading YouTube Example</h1>
+
+  <h2>Link (preferred)</h2>
+  <code>&lt;a ob-youtube href="http://www.youtube.com/watch?v=J---aiyznGQ"&gt;Keyboard cat&lt;/a&gt;</code>
+  <a ob-youtube href="http://www.youtube.com/watch?v=J---aiyznGQ">Keyboard cat</a>
+
+  <h2>Generic element with options</h2>
+  <code>&lt;div ob-youtube="J---aiyznGQ" modestbranding="1" rel="0"&gt;Keyboard cat&lt;/div&gt;</code>
+  <div ob-youtube="J---aiyznGQ" modestbranding="1" rel="0">Keyboard cat</div>
+
+  <h2>iframe</h2>
+  <code>&lt;iframe ob-youtube width="480" height="360" src="//www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen&gt;Keyboard cat&lt;/iframe&gt;</code>
+  <iframe ob-youtube width="480" height="360" src="//www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="../angular-lazytube.js"></script>
+<script>
+angular.module('myApp', ['oblador.lazytube']);
+</script>
+</body>
+</html>
