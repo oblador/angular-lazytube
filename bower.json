@@ -1,7 +1,7 @@
 {
   "name": "angular-lazytube",
   "version": "0.1.0",
-  "main": "lazytube.min.js",
+  "main": "angular-lazytube.js",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -13,9 +13,9 @@
     "gulpfile.js"
   ],
   "dependencies": {
-    "angular": "~1.2.16"
+    "angular": "^1.2.16"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.16"
+    "angular-mocks": "^1.2.16"
   }
 }
