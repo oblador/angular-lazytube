@@ -1,6 +1,6 @@
 {
   "name": "angular-lazytube",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lazy loading youtube videos with angular",
   "keywords": [
     "angular",
@@ -9,7 +9,7 @@
     "lazytube",
     "lazy"
   ],
-  "main": "angular-lazytube.min.js",
+  "main": "angular-lazytube.js",
   "repository": {
     "type": "git",
     "url": "git://git@github.com:oblador/angular-lazytube.git"
