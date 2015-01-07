@@ -30,7 +30,7 @@ directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
       var height = $scope.height = $element.attr('height') || obLazytubeConfig.height;
 
       $scope.placeholderStyle = {
-        backgroundImage: 'url(http://i.ytimg.com/vi/' + id + '/hqdefault.jpg)', 
+        backgroundImage: 'url(//i.ytimg.com/vi/' + id + '/hqdefault.jpg)', 
         width: width + 'px',
         height: height + 'px'
       };
@@ -50,7 +50,7 @@ directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
         });
 
         //We regex checked ID so url should be safe. 
-        $scope.embedUrl = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
+        $scope.embedUrl = $sce.trustAsResourceUrl('//www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
         $scope.active = true;
         $event.preventDefault();
       };
