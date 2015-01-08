@@ -1,5 +1,5 @@
 angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).
-directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
+directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig){
   //Inject base styles
   angular.element(document).find('head').prepend($templateCache.get('templates/lazytube/styles.html'));
 
@@ -24,13 +24,14 @@ directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
         }
         id = RegExp.$2;
       }
-      
+
+      var protocol = $window.location.protocol === 'https:' ? 'https:' : 'http:';
       $scope.id = id;
       var width = $scope.width = $element.attr('width') || obLazytubeConfig.width;
       var height = $scope.height = $element.attr('height') || obLazytubeConfig.height;
 
       $scope.placeholderStyle = {
-        backgroundImage: 'url(http://i.ytimg.com/vi/' + id + '/hqdefault.jpg)', 
+        backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)', 
         width: width + 'px',
         height: height + 'px'
       };
@@ -50,7 +51,7 @@ directive('obLazytube', function($sce, $templateCache, obLazytubeConfig){
         });
 
         //We regex checked ID so url should be safe. 
-        $scope.embedUrl = $sce.trustAsResourceUrl('http://www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
+        $scope.embedUrl = $sce.trustAsResourceUrl(protocol + '//www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
         $scope.active = true;
         $event.preventDefault();
       };
