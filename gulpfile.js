@@ -1,12 +1,13 @@
-var gulp   = require('gulp');
-var clean  = require('gulp-clean');
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var ngmin  = require('gulp-ngmin');
-var rename = require('gulp-rename');
+var gulp    = require('gulp');
+var del     = require('del');
+var jshint  = require('gulp-jshint');
+var concat  = require('gulp-concat');
+var uglify  = require('gulp-uglify');
+var ngmin   = require('gulp-ng-annotate');
+var rename  = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
 var templateCache = require('gulp-angular-templatecache');
+var sourcemaps = require('gulp-sourcemaps');
 var es = require('event-stream');
 
 var sources = [
@@ -17,9 +18,8 @@ var sources = [
 
 var targets = 'angular-lazytube.{js,min.js,min.js.map}';
 
-gulp.task('clean', function() {
-  gulp.src(targets)
-    .pipe(clean());
+gulp.task('clean', function(cb) {
+  del(targets, cb);
 });
 
 gulp.task('lint', function() {
@@ -28,7 +28,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('compress', function() {
+gulp.task('compress', ['clean'], function() {
   es.concat(
     gulp.src(sources).pipe(ngmin()),
     gulp.src('src/**/*.html')
@@ -44,8 +44,10 @@ gulp.task('compress', function() {
     .pipe(rename({
         suffix: '.min'
     }))
-    .pipe(uglify({ outSourceMap: true }))
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./'))
 });
 
-gulp.task('default', ['lint', 'clean', 'compress']);
+gulp.task('default', ['lint', 'compress']);
