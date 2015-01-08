@@ -1,4 +1,4 @@
-<div class="yt-wrap" ng-style="wrapperStyle">
+<div class="yt-wrap" ng-class="{'yt-responsive' : responsive }" ng-style="wrapperStyle">
   <a ng-href="http://www.youtube.com/watch?v={{id}}" ng-click="showVideo($event)" ng-show="!active" ng-style="placeholderStyle" class="yt-placeholder"><i class="yt-btn"></i></a>
   <iframe class="yt-embed" ng-if="active" width="{{width}}" height="{{height}}" ng-src="{{embedUrl}}" frameborder="0" allowfullscreen></iframe>
 </div>

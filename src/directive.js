@@ -25,18 +25,18 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
         id = RegExp.$2;
       }
 
-      var protocol = $window.location.protocol === 'https:' ? 'https:' : 'http:';
       $scope.id = id;
+      var protocol = $window.location.protocol === 'https:' ? 'https:' : 'http:';
       var width = $scope.width = $element.attr('width') || obLazytubeConfig.width;
       var height = $scope.height = $element.attr('height') || obLazytubeConfig.height;
+      var responsive = $scope.responsive = angular.isDefined($attrs.noResponsive) ? false : obLazytubeConfig.responsive;
 
       $scope.wrapperStyle = {};
       $scope.placeholderStyle = {
         backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)'
       };
 
-      if(angular.isDefined($attrs.responsive)) {
-        $element.addClass('yt-responsive');
+      if(responsive) {
         $scope.wrapperStyle.paddingBottom = 100 * height/width + '%';
       } else {
         $scope.placeholderStyle.width = width + 'px';

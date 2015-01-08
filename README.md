@@ -1,7 +1,7 @@
 angular-lazytube
 ================
 
-**Lightweight, lazy loaded YouTube videos that degrades gracefully.**
+**Lightweight, responsive, lazy loaded YouTube videos that degrades gracefully.**
 
 This AngularJS directive replaces any heavy `iframe`s or links with a image preview that loads the player only on click. Useful when performance and page size is important or for sites with many embeded youtube videos. 
 
@@ -52,6 +52,9 @@ angular.module('myApp', ['oblador.lazytube']).
 
     //Disable related videos
     obLazytubeConfig.urlParams.rel = 0;
+
+    //Disable responsive player
+    obLazytubeConfig.responsive = false;
   }
 );
 ```
@@ -63,6 +66,18 @@ To acheive the same thing but to only a specific player, just add the parameters
 ```html
 <a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ" rel="0">Keyboard cat</a>
 ```
+
+
+### Responsiveness
+
+Placeholders and the player is responsive by default. Don't forget to add `width` and `height` arguments if the aspect ratio is not 16:9. 
+
+To **disable** the responsiveness either add the `no-responsive` attribute or change the defaults as outlined above. 
+
+```html
+<a ob-lazytube no-responsive href="http://www.youtube.com/watch?v=J---aiyznGQ">Keyboard cat</a>
+```
+
 
 Building
 --------
