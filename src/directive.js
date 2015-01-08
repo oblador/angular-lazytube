@@ -30,11 +30,18 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
       var width = $scope.width = $element.attr('width') || obLazytubeConfig.width;
       var height = $scope.height = $element.attr('height') || obLazytubeConfig.height;
 
+      $scope.wrapperStyle = {};
       $scope.placeholderStyle = {
-        backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)', 
-        width: width + 'px',
-        height: height + 'px'
+        backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)'
       };
+
+      if(angular.isDefined($attrs.responsive)) {
+        $element.addClass('yt-responsive');
+        $scope.wrapperStyle.paddingBottom = 100 * height/width + '%';
+      } else {
+        $scope.placeholderStyle.width = width + 'px';
+        $scope.placeholderStyle.height = height + 'px';
+      }
 
       $scope.showVideo = function($event) {
         //Build query params by checking for attributes
