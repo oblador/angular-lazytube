@@ -1,8 +1,8 @@
 angular.module('oblador.lazytube.config', []).
 factory('obLazytubeConfig', function() {
   return {
-    width: 480, 
-    height: 360, 
+    width: 560, 
+    height: 315, 
     urlParams: { 
       autoplay: 1
     },
