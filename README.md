@@ -13,6 +13,10 @@ With bower:
 
     $ bower install angular-lazytube
 
+With NPM:
+
+    $ npm install angular-lazytube
+
 Don't forget to include [angular](https://angularjs.org/) and add `oblador.lazytube` to your module dependencies. 
 
 Usage
