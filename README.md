@@ -40,6 +40,11 @@ A few ways to embed the [Keyboard cat video](http://www.youtube.com/watch?v=J---
 <div ob-lazytube="J---aiyznGQ">Keyboard cat</div>
 ```
 
+### Specify placeholder image for video
+```html
+<div ob-lazytube="J---aiyznGQ" ob-lazy-background="//i.ytimg.com/vi/4eGQ5VFt7P4/0.jpg">Keyboard Cat</div>
+```
+
 Player Configuration
 --------------------
 
