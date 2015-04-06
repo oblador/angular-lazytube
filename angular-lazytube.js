@@ -1,6 +1,6 @@
 angular.module('oblador.lazytube', [
-  'oblador.lazytube.templates', 
-  'oblador.lazytube.config', 
+  'oblador.lazytube.templates',
+  'oblador.lazytube.config',
   'oblador.lazytube.directive'
 ]);
 
@@ -8,10 +8,10 @@ angular.module('oblador.lazytube', [
 angular.module('oblador.lazytube.config', []).
 factory('obLazytubeConfig', function() {
   return {
-    width: 560, 
+    width: 560,
     height: 315,
-    responsive: true, 
-    urlParams: { 
+    responsive: true,
+    urlParams: {
       autoplay: 1
     },
   };
@@ -49,14 +49,14 @@ directive('obLazytube', ["$sce", "$window", "$templateCache", "obLazytubeConfig"
       }
 
       $scope.id = id;
-      var protocol = $window.location.protocol === 'https:' ? 'https:' : 'http:';
       var width = $scope.width = $element.attr('width') || obLazytubeConfig.width;
       var height = $scope.height = $element.attr('height') || obLazytubeConfig.height;
       var responsive = $scope.responsive = angular.isDefined($attrs.noResponsive) ? false : obLazytubeConfig.responsive;
+      var bgImg = $attrs.obLazyBackground ? $attrs.obLazyBackground : ('//i.ytimg.com/vi/' + id + '/hqdefault.jpg');
 
       $scope.wrapperStyle = {};
       $scope.placeholderStyle = {
-        backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)'
+        backgroundImage: 'url(' + bgImg + ')'
       };
 
       if(responsive) {
@@ -80,8 +80,8 @@ directive('obLazytube', ["$sce", "$window", "$templateCache", "obLazytubeConfig"
           urlParams.push(key + '=' + encodeURIComponent(val));
         });
 
-        //We regex checked ID so url should be safe. 
-        $scope.embedUrl = $sce.trustAsResourceUrl(protocol + '//www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
+        //We regex checked ID so url should be safe.
+        $scope.embedUrl = $sce.trustAsResourceUrl('//www.youtube.com/embed/' + id + '/?' + urlParams.join('&'));
         $scope.active = true;
         $event.preventDefault();
       };
