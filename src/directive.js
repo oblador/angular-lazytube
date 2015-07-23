@@ -33,7 +33,7 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
 
       $scope.wrapperStyle = {};
       $scope.placeholderStyle = {
-        backgroundImage: 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)'
+        backgroundImage: $attrs.obPlaceholder ? 'url(' + $attrs.obPlaceholder + ')' : 'url(' + protocol + '//i.ytimg.com/vi/' + id + '/hqdefault.jpg)'
       };
 
       if(responsive) {
