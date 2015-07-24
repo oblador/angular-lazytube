@@ -6,6 +6,6 @@ factory('obLazytubeConfig', function() {
     responsive: true, 
     urlParams: { 
       autoplay: 1
-    },
+    }
   };
 });
