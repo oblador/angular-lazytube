@@ -87,7 +87,8 @@ To **disable** the responsiveness either add the `no-responsive` attribute or ch
 Use your own placeholder image from your server.
 
 ```html
-<a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ" ob-placeholder="{{'images/myVideo.png'}}">Keyboard cat</a>
+<a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ" ob-placeholder="'images/myVideo.png'">Keyboard cat</a>
+<a ob-lazytube href="http://www.youtube.com/watch?v=J---aiyznGQ" ob-placeholder="{{data.myImageFile}}">Keyboard cat</a>
 ```
 
 Building
