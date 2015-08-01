@@ -95,3 +95,14 @@ Building
 --------
 
     $ gulp
+
+### Fix iOS play button icon
+
+In some cases the play button on iOS will be displayed as a blue small ugly icon. You can fix this to be the clear white flat icon by adding this CSS:
+
+```css
+// YOUTUBE: iOS FIX
+.yt-btn::before {
+    font-family: '';
+}
+```
