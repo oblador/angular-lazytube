@@ -19,10 +19,14 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
       var id = $attrs.obLazytube;
       if(!id) {
         var url = $attrs.href || $attrs.src || $attrs.ngSrc;
-        if(!url || !url.match(urlPattern)) {
+        if(!url) {
           return;
         }
-        id = RegExp.$2;
+        var r = url.match(urlPattern);
+        if (!r) {
+          return;
+        }
+        id = r[2];
       }
 
       $scope.id = id;
