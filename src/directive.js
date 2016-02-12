@@ -18,7 +18,7 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
     link: function($scope, $element, $attrs) {
       var id = $attrs.obLazytube;
       if(!id) {
-        var url = $attrs.href || $attrs.src;
+        var url = $attrs.href || $attrs.src || $attrs.ngSrc;
         if(!url || !url.match(urlPattern)) {
           return;
         }
