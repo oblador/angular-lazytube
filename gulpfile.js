@@ -18,8 +18,8 @@ var sources = [
 
 var targets = 'angular-lazytube.{js,min.js,min.js.map}';
 
-gulp.task('clean', function(cb) {
-  del(targets, cb);
+gulp.task('clean', function() {
+  del.sync([targets]);
 });
 
 gulp.task('lint', function() {
