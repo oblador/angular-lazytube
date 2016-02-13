@@ -18,11 +18,15 @@ directive('obLazytube', function($sce, $window, $templateCache, obLazytubeConfig
     link: function($scope, $element, $attrs) {
       var id = $attrs.obLazytube;
       if(!id) {
-        var url = $attrs.href || $attrs.src;
-        if(!url || !url.match(urlPattern)) {
+        var url = $attrs.href || $attrs.src || $attrs.ngSrc;
+        if(!url) {
           return;
         }
-        id = RegExp.$2;
+        var r = url.match(urlPattern);
+        if (!r) {
+          return;
+        }
+        id = r[2];
       }
 
       $scope.id = id;
