@@ -19,7 +19,7 @@ factory('obLazytubeConfig', function() {
 
 
 angular.module("oblador.lazytube.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("templates/lazytube/directive.html","<div class=\"yt-wrap\" ng-class=\"{\'yt-responsive\' : responsive }\" ng-style=\"wrapperStyle\"><a ng-href=\"http://www.youtube.com/watch?v={{id}}\" ng-click=\"showVideo($event)\" ng-show=\"!active\" ng-style=\"placeholderStyle\" class=\"yt-placeholder\"><i class=\"yt-btn\"></i></a><iframe class=\"yt-embed\" ng-if=\"active\" width=\"{{width}}\" height=\"{{height}}\" ng-src=\"{{embedUrl}}\" frameborder=\"0\" allowfullscreen></iframe></div>");
-$templateCache.put("templates/lazytube/styles.html","<style type=\"text/css\">.yt-responsive{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%}.yt-placeholder{display:block;position:relative;background:#000 no-repeat 50% 50%;background-size:cover;margin:4px 0}.yt-responsive .yt-placeholder,.yt-responsive .yt-embed{position:absolute;top:0;left:0;width:100%;height:100%;margin:0}.yt-btn:before{content:\"\\25B6\\FE0E\";color:#fff;font-family:Helvetica,sans-serif}.yt-btn{position:absolute;left:50%;top:50%;width:84px;line-height:58px;margin:-29px 0 0 -42px;font-style:normal;background:#000;background:rgba(0,0,0,.8);text-align:center;font-size:28px;border-radius:10px;text-indent:5px}a:hover .yt-btn{background:#cc181e}</style>");}]);
+$templateCache.put("templates/lazytube/styles.html","<style type=\"text/css\">.yt-responsive{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%}.yt-placeholder{display:block;position:relative;background:#000 no-repeat 50% 50%;background-size:cover;margin:4px 0}.yt-responsive .yt-embed,.yt-responsive .yt-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;margin:0}.yt-btn:before{content:\"\\25B6\\FE0E\";color:#fff;font-family:Helvetica,sans-serif}.yt-btn{position:absolute;left:50%;top:50%;width:84px;line-height:58px;margin:-29px 0 0 -42px;font-style:normal;background:#000;background:rgba(0,0,0,.8);text-align:center;font-size:28px;border-radius:10px;text-indent:5px}a:hover .yt-btn{background:#cc181e}</style>");}]);
 
 angular.module('oblador.lazytube.directive', ['oblador.lazytube.config']).
 directive('obLazytube', ["$sce", "$window", "$templateCache", "obLazytubeConfig", function($sce, $window, $templateCache, obLazytubeConfig){
@@ -41,11 +41,15 @@ directive('obLazytube', ["$sce", "$window", "$templateCache", "obLazytubeConfig"
     link: function($scope, $element, $attrs) {
       var id = $attrs.obLazytube;
       if(!id) {
-        var url = $attrs.href || $attrs.src;
-        if(!url || !url.match(urlPattern)) {
+        var url = $attrs.href || $attrs.src || $attrs.ngSrc;
+        if(!url) {
           return;
         }
-        id = RegExp.$2;
+        var r = url.match(urlPattern);
+        if (!r) {
+          return;
+        }
+        id = r[2];
       }
 
       $scope.id = id;

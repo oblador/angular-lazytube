@@ -1,6 +1,6 @@
 {
   "name": "angular-lazytube",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Lazy loading youtube videos with angular",
   "keywords": [
     "angular",
